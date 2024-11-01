@@ -1,0 +1,36 @@
+import os
+
+# Step 1: Open the file in write mode and write content
+file = open("example.txt", "w")
+file.write("Hello, world!\n")  # Write some content to the file
+file.write("Hello world1\nHello world2\nHello world3\nHello world4")  # more writing done to file 
+file.close()
+
+# step 1.5: make ammends to the file
+with open("example.txt", "a") as file:    # when with is used there is no need for file.close() as it automatically closes the loop 
+    file.write("\nThis is an additional line.")
+
+# Step 2: Open the file again in read mode to read the content
+file = open("example.txt", "r")
+content = file.read()  # Now we can read the content
+print(content)
+file.close()  # Close the file after reading
+
+with open("example.txt", "r") as file:    # opens file in read mode 
+    
+    first_line = file.readline()  # opens spefic line 
+    print(first_line)
+
+    second_line = file.readline()
+    print(second_line)
+
+        
+    all_lines = file.readlines()  # opens all lines 
+    print(all_lines)
+
+
+if os.path.exists("example.txt"):                # this checks if the file you want exists 
+    with open("example.txt", "r") as file:     # opens the file if it exists 
+        print(file.read())                    # this line says to open the full file
+else:
+    print("File does not exist.")              # if it does not exist then it will print this line 
